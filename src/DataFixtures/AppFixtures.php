@@ -3,12 +3,10 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
-use App\Entity\Roles;
 use App\Entity\Users;
 use DateTimeImmutable;
 use App\Entity\Articles;
 use App\Entity\Comments;
-use Doctrine\ORM\Cache\TimestampRegion;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;

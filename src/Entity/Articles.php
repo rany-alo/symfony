@@ -22,7 +22,7 @@ class Articles
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?users $user = null;
+    private ?Users $user = null;
 
     #[ORM\Column (options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $created_at = null;
@@ -56,12 +56,12 @@ class Articles
         return $this;
     }
 
-    public function getUser(): ?users
+    public function getUser(): ?Users
     {
         return $this->user;
     }
 
-    public function setUser(?users $user): self
+    public function setUser(?Users $user): self
     {
         $this->user = $user;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentsRepository::class)]
@@ -13,19 +14,19 @@ class Comments
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $comment = null;
 
-    #[ORM\Column]
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?users $user = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?articles $article = null;
+
+    #[ORM\Column (options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $created_at = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?users $id_user = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?articles $id_article = null;
 
     public function getId(): ?int
     {
@@ -44,6 +45,30 @@ class Comments
         return $this;
     }
 
+    public function getUser(): ?users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?users $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getArticle(): ?articles
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?articles $article): self
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
@@ -52,30 +77,6 @@ class Comments
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    public function getIdUser(): ?users
-    {
-        return $this->id_user;
-    }
-
-    public function setIdUser(?users $id_user): self
-    {
-        $this->id_user = $id_user;
-
-        return $this;
-    }
-
-    public function getIdArticle(): ?articles
-    {
-        return $this->id_article;
-    }
-
-    public function setIdArticle(?articles $id_article): self
-    {
-        $this->id_article = $id_article;
 
         return $this;
     }

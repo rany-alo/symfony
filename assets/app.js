@@ -10,6 +10,9 @@ import './styles/app.scss';
 
 import { Tooltip, Toast, Popover } from 'bootstrap';
 
+import './css/styles.css';
+import './js/scripts.js';
+
 // start the Stimulus application
 import './bootstrap';
 

@@ -23,6 +23,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "assets": "^3.0.1",
         "autoprefixer": "^10.4.11",
         "postcss-loader": "^7.0.1"
     }

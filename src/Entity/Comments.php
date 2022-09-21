@@ -19,11 +19,11 @@ class Comments
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?users $user = null;
+    private ?Users $user = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?articles $article = null;
+    private ?Articles $article = null;
 
     #[ORM\Column (options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $created_at = null;
@@ -45,24 +45,24 @@ class Comments
         return $this;
     }
 
-    public function getUser(): ?users
+    public function getUser(): ?Users
     {
         return $this->user;
     }
 
-    public function setUser(?users $user): self
+    public function setUser(?Users $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getArticle(): ?articles
+    public function getArticle(): ?Articles
     {
         return $this->article;
     }
 
-    public function setArticle(?articles $article): self
+    public function setArticle(?Articles $article): self
     {
         $this->article = $article;
 

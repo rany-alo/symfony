@@ -39,5 +39,9 @@
             </div>
         </div>
         {% endfor %}
+        <div class = "d-flex justify-content-center">
+            {% do articles.setPageRange(2) %}
+            {{ knp_pagination_render(articles, 'partials/pagination.html.twig') }}
+        </div>
        
 {% endblock %}

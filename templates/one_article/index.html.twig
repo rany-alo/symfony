@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Hello OneArticleController!{% endblock %}
 
 {% block body %}
 
@@ -19,13 +19,14 @@
             </div>
         </header>
         <!-- Main Content-->
-        {% for article in articles %}
+        {% for article in one_article %}
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview">
                             <h2 class="post-title">{{article.title}}</h2>
+                            <p class="post-title">{{article.article}}</p>
                         <p class="post-meta">
                             Créé par
                             {{article.getUser.firstname}}
@@ -33,11 +34,29 @@
                         </p>
                     </div>
                     <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{{path('app_one_article', {id: article.id})}}">Voir l'article</a></div>
                     <hr class="my-4" />
                 </div>
             </div>
         </div>
         {% endfor %}
-       
+        <h4 class="row gx-4 gx-lg-5 justify-content-center">Les Commentaires</h4>
+        {% for comment in comments %}
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <p class="post-title">{{comment.comment}}</p>
+                        <p class="post-meta">
+                            Ajouté par
+                            {{comment.getUser.firstname}}
+                            Le {{comment.CreatedAt.format('Y-m-d H:i:s')}}
+                        </p>
+                    </div>
+                    <!-- Pager-->
+                    <hr class="my-4" />
+                </div>
+            </div>
+        </div>
+        {% endfor %}
 {% endblock %}

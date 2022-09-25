@@ -18,7 +18,7 @@ class HomeController extends AbstractController
                           Request $Request
                         ): Response
     {
-        $data = $ArticlesRepository->findAll();
+        $data = $ArticlesRepository->findBy(array(), array('id' => 'desc'));
         $articles = $paginator->paginate(
             $data,
             $Request->query->getInt('page',1),3

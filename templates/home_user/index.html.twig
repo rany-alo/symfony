@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_user.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home User{% endblock %}
 
 {% block body %}
 
@@ -33,7 +33,7 @@
                         </p>
                     </div>
                     <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{{path('app_article', {id: article.id})}}">Voir l'article</a></div>
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{{path('app_articles_index', {id: article.id})}}">Voir l'article</a></div>
                     <hr class="my-4" />
                 </div>
             </div>

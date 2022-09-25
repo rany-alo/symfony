@@ -5,16 +5,18 @@ namespace App\Controller\Admin;
 use App\Entity\Users;
 use App\Entity\Articles;
 use App\Entity\Comments;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
-{
+{   
     #[Route('/admin', name: 'admin')]
+    #[IsGranted('ROLE_ADMIN', statusCode: 403, message: 'Interdit, vous n\'êtes pas Adminstrateur ')]
     public function index(): Response
     {
         $routeBuilder = $this->container->get(AdminUrlGenerator::class);
@@ -41,7 +43,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Symfony');
+            ->setTitle('Mon Blog');
     }
 
     public function configureMenuItems(): iterable

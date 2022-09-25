@@ -25,6 +25,7 @@
     "dependencies": {
         "assets": "^3.0.1",
         "autoprefixer": "^10.4.11",
+        "build": "^0.1.4",
         "postcss-loader": "^7.0.1"
     }
 }

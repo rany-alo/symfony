@@ -1,0 +1,74 @@
+{% extends 'base_user.html.twig' %}
+
+{% block title %}My Articles{% endblock %}
+
+{% block body %}
+  <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ asset('assets/img/home-bg.jpg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class = "text-white">
+                            <h1>{{one_article.title}}</h1>
+                            <span class="subheading">
+                            Créé par
+                            {{one_article.getUser.firstname}}
+                            Le {{one_article.CreatedAt.format('Y-m-d H:i:s')}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <p class="post-title">{{one_article.article}}</p>
+
+                    </div>
+                    <!-- Pager-->
+                    <hr class="my-4" />
+                </div>
+            </div>
+        </div>
+        <h4 class="d-flex justify-content-center">Les commentaires</h2>
+        {% for comment in comments %}
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                            <p class="post-title">{{comment.comment}}</p>
+                        <p class="post-meta">
+                            Créé par
+                            {{comment.getUser.firstname}}
+                            Le {{comment.CreatedAt.format('Y-m-d H:i:s')}}
+                        </p>
+                    </div>
+                    <!-- Pager-->
+                    <hr class="my-4" />
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        {{ form_start(form) }}
+                        {{ form_row(form.comment) }}
+                            <button type="submit" name = "add_comment" class="btn btn-primary">Ajouter</button>
+                        {{ form_end(form) }}
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+      
+{% endblock %}

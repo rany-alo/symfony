@@ -14,14 +14,19 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: app_user_provider
-            custom_authenticator: App\Security\UserAuthAuthenticator
+            # lazy: true
+            # provider: app_user_provider
+            # custom_authenticator: App\Security\UserAuthAuthenticator
+            form_login:
+                # "app_login" is the name of the route created previously
+                login_path: app_login
+                check_path: app_login
+                default_target_path: app_home_user
             logout:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
-            entry_point: App\Security\AuthenticationEntryPoint
+            # entry_point: App\Security\AuthenticationEntryPoint
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
